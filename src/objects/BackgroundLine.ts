@@ -11,13 +11,23 @@ class BackgroundLine {
 
     #ctx: CanvasRenderingContext2D;
 
-    #backgroundColor = "rgb(245 185 66)";
+    #lineColor = "rgb(245 185 66)";
     #lineWidth: number;
     #lineHeight: number;
 
-    drawLine() {
-        this.#ctx.fillStyle = this.#backgroundColor;
-        this.#ctx.fillRect(0, 0, this.#lineWidth, this.#lineHeight);
+    getLineHeight() {
+        return this.#lineHeight
+    }
+
+    getLineWidth() {
+        return this.#lineWidth
+    }
+
+    drawLine(posX: number, posY: number) {
+        if (!posX || !posY) throw new Error('Line coords dont passed')
+
+        this.#ctx.fillStyle = this.#lineColor;
+        this.#ctx.fillRect(posX, posY, this.#lineWidth, this.#lineHeight);
     }
 
 
